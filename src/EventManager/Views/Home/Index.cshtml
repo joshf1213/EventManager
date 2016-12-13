@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EventManager.Models.Event>
+<div class="row" id="banner">
+    <img class="col-md-12" width="2560" height="300" src="http://az616578.vo.msecnd.net/files/2016/07/31/636056047070934203-1673908794_6360302589160107661103846388_concert-crowd-crop.jpg" />
+
+</div><h2>All Upcoming Events</h2>
+@foreach (var show in Model)
+{
+    <h4><b>@show.Artist.Name</b></h4>
+    <div class="main" style="color:darkblue">
+        <div class="right">
+            <div class="upperleft" style="background-color:gainsboro">@show.Venue</div>
+            <div><b>@show.Genre.Name</b></div>
+        </div>
+        <div class="left">
+            <div class="upperleft" style="background-color:gainsboro"><b>@show.Date.ToString("MMM").ToUpper()</b></div>
+            <div>@show.Date.ToString("dd")</div>
+        </div>
+     </div>
+     <br /><br />
+}
+

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EventManager.Models.Event>
+<h2><b>@ViewBag.Artist.Name</b></h2>
+<br />
+<div>
+    <a class="btn-success btn-lg" asp-action="Create">Create New event</a>
+    <a class="btn-primary btn-lg" asp-controller="Home" asp-action="Index">All events</a>
+</div>
+
+<br />
+<h3>My Events</h3>
+@foreach (var show in Model)
+{
+    <div class="main" style="color:darkblue">
+        <div class="right">
+            <div class="upperleft" style="background-color:gainsboro">@show.Venue</div>
+            <div><b>@show.Genre.Name</b></div>
+        </div>
+        <div class="left">
+            <div class="upperleft" style="background-color:gainsboro"><b>@show.Date.ToString("MMM").ToUpper()</b></div>
+            <div>@show.Date.ToString("dd")</div>
+        </div>
+    </div>
+    <br />
+    <a class="btn btn-sm btn-default" asp-action="Edit" asp-route-id="@show.EventID">Edit</a>
+    <a class="btn btn-sm btn-default" asp-action="Cancel" asp-route-id="@show.EventID" asp-route-confirm=true onclick="return confirm('Do you really want to cancel this event?')">Cancel</a>
+    <br /><br />
+}
